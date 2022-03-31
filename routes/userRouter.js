@@ -39,11 +39,11 @@ router.post('/login', async (req, res) => {
         return res.send("Email ou Senha digitados incorretamente!");
     };
 
-    const token = jwt.sign({ _id: selectedEmail._id, name: selectedEmail.name }, process.env.TOKEN_SECRET, {expiresIn: 30});
+    const token = jwt.sign({ name: selectedEmail.name, email: selectedEmail.email, admin: selectedEmail.admin }, process.env.TOKEN_SECRET, {expiresIn: '24h'});
 
 
     try {
-        res.send({name: selectedEmail.name, email: selectedEmail.email, admin: selectedEmail.admin});
+        res.send({name: selectedEmail.name, email: selectedEmail.email, admin: selectedEmail.admin, token});
     } catch (err) {
             res.send(err);
         }

@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./routes/userRouter')
-const private = require('./routes/private');
+const token = require('./routes/token');
 
 mongoose.connect('mongodb://localhost/netflix')
     .then(() => console.log('-MongoDB Connected-'))
@@ -15,7 +15,7 @@ app.use(cors({ credentials: true }));
 app.use(express.json(), express.urlencoded({ extended: bodyParser }));
 
 
-app.use('/', private);
+app.use('/', token);
 app.use('/user', userRouter);
 
 

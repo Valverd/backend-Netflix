@@ -2,18 +2,17 @@ const jwt = require('jsonwebtoken');
 
 const auth = async (req, res, next) => {
 
-    const token = req.cookies.auth_token;
+    const token = req.headers.authorization;
 
     if(!token){
-        return res.status(401).send("Acesso não autorizado!");
+        return res.status(401).send("Acesso não autorizado");
     };
 
     try{
-        const userVerified = await jwt.verify(token, process.env.TOKEN_SECRET);
-        req.user = userVerified;
+        await jwt.verify(token, process.env.TOKEN_SECRET);
         next();
     } catch (err) {
-        res.status(400).send(err);
+        res.status(401).send(err);
     };
 
 };
