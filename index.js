@@ -7,7 +7,7 @@ const cors = require('cors');
 const userRouter = require('./routes/userRouter')
 const token = require('./routes/token');
 
-mongoose.connect('mongodb://localhost/netflix')
+mongoose.connect(process.env.MONGO_DB_CONNECT)
     .then(() => console.log('-MongoDB Connected-'))
     .catch(err => console.log(err));
 
