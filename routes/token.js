@@ -17,5 +17,3 @@ router.get('/token', auth, (req, res) => {
 });
 
 module.exports = router;
-
-//estou tentando ver como passo o jwt para a forma de objeto.

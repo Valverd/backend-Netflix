@@ -41,7 +41,6 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ name: selectedEmail.name, email: selectedEmail.email, admin: selectedEmail.admin }, process.env.TOKEN_SECRET, {expiresIn: '24h'});
 
-
     try {
         res.send({name: selectedEmail.name, email: selectedEmail.email, admin: selectedEmail.admin, token});
     } catch (err) {
@@ -49,6 +48,7 @@ router.post('/login', async (req, res) => {
         }
 
     });
+
 
 
 module.exports = router;
