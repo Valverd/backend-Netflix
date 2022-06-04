@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
     myTvList: {type: Array},
     myMovieList: {type: Array},
     createdDate: {type: Date, default: Date.now()},
-    admin: {type: Boolean, default: false}
 });
 
 const User = mongoose.model('User', userSchema);
